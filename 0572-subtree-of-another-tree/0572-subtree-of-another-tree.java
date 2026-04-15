@@ -14,24 +14,18 @@
  * }
  */
 class Solution {
-    public boolean checkSub(TreeNode l, TreeNode r){
+    public boolean check(TreeNode l,TreeNode r){
         if(l==null && r==null) return true;
         if(l==null || r==null) return false;
-
         if(l.val!=r.val) return false;
-
-        return checkSub(l.left,r.left) && checkSub(l.right,r.right);
-
+        return check(l.left,r.left) && check(l.right,r.right);
     }
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        if(root==null && subRoot==null) return true;
-        if(root==null || subRoot==null) return false;
-
-        if(checkSub(root,subRoot)){
+        if(root==null) return false;
+        if(check(root,subRoot)){
             return true;
+        }else{
+            return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
         }
-
-        return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
-
     }
 }
