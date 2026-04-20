@@ -15,28 +15,29 @@ class Solution {
 
         int maxseen = Integer.MIN_VALUE;
         int minseen = Integer.MAX_VALUE;
-       
-        int end =-1;
-        int start = -2;
 
-       for(int i=0;i<nums.length;i++){
-            if(nums[i]<maxseen){
+        int start = -1;
+        int end = -2;
+
+        // Left → Right
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] < maxseen) {
                 end = i;
-            }else{
+            } else {
                 maxseen = nums[i];
             }
-       }
+        }
 
-       for(int i=nums.length-1;i>=0;i--){
-            if(nums[i]>minseen){
+        // Right → Left
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (nums[i] > minseen) {
                 start = i;
-            }else{
+            } else {
                 minseen = nums[i];
             }
-       }
+        }
 
-       return end-start>0 ? end-start+1 : 0;
-
+        return end - start + 1;
 
     }
 }
