@@ -3,16 +3,17 @@ class Solution {
         int n = nums.length;
         int sum = 0;
         int count = 0;
-        HashMap<Integer,Integer> prefixSum  = new HashMap<>();
+        HashMap<Integer,Integer> prefix = new HashMap<>();
         for(int i=0;i<n;i++){
             sum += nums[i];
-            if(sum ==k) count++;
-
-            int diff = sum-k;
-            if(prefixSum.containsKey(diff)){
-                count += prefixSum.get(diff);
+            if(sum==k) count++;
+            
+            int diff = sum - k;
+            if(prefix.containsKey(diff)){
+                count += prefix.get(diff);
             }
-            prefixSum.put(sum, prefixSum.getOrDefault(sum, 0) + 1);
+
+            prefix.put(sum, prefix.getOrDefault(sum,0)+1);
         }
         return count;
     }
