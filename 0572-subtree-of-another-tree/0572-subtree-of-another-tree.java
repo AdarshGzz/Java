@@ -21,6 +21,11 @@ class Solution {
         return check(root.left,subRoot.left) && check(root.right, subRoot.right);
     }
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        return check(root,subRoot);
+        if(root==null) return false;
+        if(check(root,subRoot)){
+            return true;
+        }else{
+            return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
+        }
     }
 }
