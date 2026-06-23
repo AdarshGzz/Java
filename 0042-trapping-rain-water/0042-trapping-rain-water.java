@@ -18,26 +18,50 @@ class Solution {
         //     totalWater += Math.min(leftMax,rightMax) - height[i];
         // } 
         // return totalWater;
+        // ______
+
+        // int n = height.length;
+        // int left = 0;
+        // int right = n-1;
+
+        // int leftMax = height[left], rightMax=height[right];
+        // int water = 0;
+
+        // while(left<right){
+        //     if(leftMax<rightMax){
+        //         left++;
+        //         leftMax  = Math.max(leftMax,height[left]);
+        //         water += leftMax - height[left];
+        //     }else{
+        //         right--;
+        //         rightMax = Math.max(rightMax,height[right]);
+        //         water += rightMax -height[right];
+        //     }
+        // }
+
+        // return water;
 
         int n = height.length;
-        int left = 0;
-        int right = n-1;
-
-        int leftMax = height[left], rightMax=height[right];
+        int l = 0;
+        int r = n-1;
+        int lmax = 0;
+        int rmax = 0;
         int water = 0;
+        while(l<r){
+            lmax = Math.max(lmax,height[l]);
+            rmax = Math.max(rmax,height[r]);
 
-        while(left<right){
-            if(leftMax<rightMax){
-                left++;
-                leftMax  = Math.max(leftMax,height[left]);
-                water += leftMax - height[left];
+            if(lmax<rmax){
+                water += lmax - height[l];
+                l++; 
             }else{
-                right--;
-                rightMax = Math.max(rightMax,height[right]);
-                water += rightMax -height[right];
+                water+= rmax - height[r];
+                r--;
             }
+
         }
 
         return water;
+
     }
 }
