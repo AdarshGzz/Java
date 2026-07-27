@@ -7,7 +7,4 @@ class Solution:
             else:
                 stack.append(ch)
 
-        text =""
-        for i in range(len(stack)):
-            text+=stack[i]
-        return text
+        return "".join(stack)
